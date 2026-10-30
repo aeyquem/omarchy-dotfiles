@@ -51,3 +51,6 @@ o.bind("CTRL + PRINT", "Screenshot and choose a finish with Omaframe", "'/home/a
 -- Restore the Tmux terminal binding that `omarchy remove preinstalls` disabled.
 -- (Was SUPER + ALT + RETURN -> omarchy-launch-terminal-tmux.)
 o.bind("SUPER + ALT + RETURN", "Tmux", { omarchy = "terminal-tmux" })
+
+-- Personal window rules (loaded here because hyprland.lua stays untracked).
+require("hypr.windows")
