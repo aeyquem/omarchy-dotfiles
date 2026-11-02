@@ -14,6 +14,9 @@
 
 -- Add a new binding.
 -- o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
+-- Replace Omarchy's SUPER+CTRL+E emoji shortcut with SUPER+PERIOD.
+hl.unbind("SUPER + CTRL + E")
+o.bind("SUPER + PERIOD", "Emojis", "omarchy-shell shell toggle omarchy.emojis")
 
 -- Change an existing binding by unbinding it first, then binding the key again.
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
