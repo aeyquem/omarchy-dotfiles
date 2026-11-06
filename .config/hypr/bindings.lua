@@ -17,6 +17,14 @@
 -- Replace Omarchy's SUPER+CTRL+E emoji shortcut with SUPER+PERIOD.
 hl.unbind("SUPER + CTRL + E")
 o.bind("SUPER + PERIOD", "Emojis", "omarchy-shell shell toggle omarchy.emojis")
+o.bind("SUPER + SHIFT + S", "Screenshot", "omarchy screenshot")
+
+-- Dwindle tree controls (Super+Ctrl+Shift+Arrow).
+o.bind("SUPER + CTRL + SHIFT + LEFT", "Dwindle: Promote to root (same side)",
+  hl.dsp.layout("movetoroot active"))
+o.bind("SUPER + CTRL + SHIFT + RIGHT", "Dwindle: Promote to root (other side)",
+  hl.dsp.layout("movetoroot active unstable"))
+o.bind("SUPER + CTRL + SHIFT + UP", "Dwindle: Swap focused split", hl.dsp.layout("swapsplit"))
 
 -- Change an existing binding by unbinding it first, then binding the key again.
 -- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
@@ -54,6 +62,14 @@ o.bind("CTRL + PRINT", "Screenshot and choose a finish with Omaframe", "'/home/a
 -- Restore the Tmux terminal binding that `omarchy remove preinstalls` disabled.
 -- (Was SUPER + ALT + RETURN -> omarchy-launch-terminal-tmux.)
 o.bind("SUPER + ALT + RETURN", "Tmux", { omarchy = "terminal-tmux" })
+
+-- Swap SUPER+F and SUPER+CTRL+F so the actions are backwards:
+-- Super+F -> maximized (fills the workspace, shell bar stays visible)
+-- Super+Ctrl+F -> true fullscreen (full window, bar hidden)
+hl.unbind("SUPER + F")
+hl.unbind("SUPER + ALT + F")
+o.bind("SUPER + F", "Maximized (keep bar)", hl.dsp.window.fullscreen({ mode = "maximized" }))
+o.bind("SUPER + ALT + F", "Fullscreen (hide bar)", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 -- Personal window rules (loaded here because hyprland.lua stays untracked).
 require("hypr.windows")
